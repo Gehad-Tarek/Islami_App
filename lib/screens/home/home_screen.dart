@@ -17,7 +17,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int selectedIndex = 2;
+  int selectedIndex = 0;
   List<Widget> homeTabs = [QuranTab(), HadethTab(), SebhaTab(), RadioTab(), SettingsTab()];
 
   @override

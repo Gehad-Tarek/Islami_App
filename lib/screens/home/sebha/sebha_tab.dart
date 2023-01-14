@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:islami_app/project_helpers/my_theme_data.dart';
 import 'package:islami_app/providers/settings_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -45,7 +46,6 @@ class _SebhaTabState extends State<SebhaTab> {
           child: Container(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height * 0.5,
-            // color: Colors.lightBlueAccent,
             child: Stack(
               fit: StackFit.expand,
               alignment: Alignment.topCenter,
@@ -92,11 +92,9 @@ class _SebhaTabState extends State<SebhaTab> {
               borderRadius: BorderRadius.circular(25),
               color: Theme.of(context).primaryColor),
           child: Center(
-            child: Text(
-              "$zekrCount",
-              textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.bodyMedium,
-            ),
+            child: Text("$zekrCount",
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.bodyMedium),
           ),
         ),
         const Spacer(flex: 1),
@@ -105,12 +103,16 @@ class _SebhaTabState extends State<SebhaTab> {
           height: MediaQuery.of(context).size.height * 0.09,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(25),
-              color: Theme.of(context).primaryColor),
+              color: myProvider.currentTheme == ThemeMode.light
+                  ? MyThemeData.primaryColor
+                  : MyThemeData.accentDarkColor),
           child: Center(
             child: Text(
               azkar[currentIndex],
               textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.bodyMedium,
+              style: myProvider.currentTheme == ThemeMode.light
+                  ? Theme.of(context).textTheme.bodyMedium
+                  : Theme.of(context).textTheme.bodyMedium!.copyWith(color: Colors.black),
             ),
           ),
         ),
